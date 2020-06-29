@@ -6,6 +6,6 @@ export class Patient {
         public name?: string,
         public password?: string,
         public token?: string,
-        public locations?: Array<location>
+        public locations?: location[]
     ) { }
 }

@@ -15,7 +15,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
      
   ],
   imports: [
-    CommonModule,FormsModule,BrowserModule
+    CommonModule,
+    FormsModule,
+    BrowserModule
     ,HttpClientModule
   ],
   providers:[

@@ -1,3 +1,4 @@
+
 <h1 id="title">{{title}}</h1>
 <h1 id="patientName"></h1>
 <div id="loginPanel">
@@ -8,29 +9,35 @@
     <div id="messageLogin">{{messageLogin}}</div>
 </div>
 <p id="message"></p>
-<img src="../assets/img/searchGray.png" id="search" alt="search"><span>my locations</span>
+<!-- <img src="../assets/img/searchGray.png" id="search" alt="search"><span>my locations</span>
 <span id="or">or</span>
 <input id="age" type="text" placeholder="Search by age">
-<img src="../assets/img/searchBlue.png" id="searchAge" alt="searchage">
-<table id="pathsTable">
-    <tr>
-        <th class="title" *ngFor="let t of titles">{{t}}</th>
-    </tr>
-    <tr *ngFor="let location of patientService.locations">
-        <td>{{location.startDate}}</td>
-        <td>{{location.endDate}}</td>
-        <td>{{location.city}}</td>
-        <td>{{location.location}}</td>
-        <td (click)='deleteLocation(location)' >X</td>
-    </tr>
-    <tr>
-        <td><input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date"></td>
-        <td><input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date"></td>
-        <td><input type="text" [(ngModel)]="newLocation.city" placeholder="city"></td> 
-        <td><input type="text" [(ngModel)]="newLocation.location" placeholder="location"></td>
-        <td><input type="button" value="Add" (click)="addLocation()"></td>
-    </tr>
-</table>
+<img src="../assets/img/searchBlue.png" id="searchAge" alt="searchage"> -->
+<div *ngIf="isLoading==false" id="pathsTable">
+    <table >
+        <tr>
+            <th class="title" *ngFor="let t of titles">{{t}}</th>
+        </tr>
+        <tr *ngFor="let location of patientService.locations">
+            <td>{{location.startDate}}</td>
+            <td>{{location.endDate}}</td>
+            <td>{{location.city}}</td>
+            <td>{{location.location}}</td>
+            <td (click)='deleteLocation(location)' >X</td>
+        </tr>
+        <tr>
+            <td><input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date"></td>
+            <td><input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date"></td>
+            <td><input type="text" [(ngModel)]="newLocation.city" placeholder="city"></td> 
+            <td><input type="text" [(ngModel)]="newLocation.location" placeholder="location"></td>
+            <td><input type="button" value="Add" (click)="addLocation()"></td>
+        </tr>
+    </table>
+    <button (click)="saveChanges()" id="save">save!!</button>
+</div>
+
+<div  *ngIf="isLoading==true" class="loader"></div>
+
 <!-- <div>
     <input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date">
     <input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date">

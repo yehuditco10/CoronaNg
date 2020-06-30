@@ -1,4 +1,3 @@
-
 <h1 id="title">{{title}}</h1>
 <h1 id="patientName"></h1>
 <div id="loginPanel">
@@ -13,31 +12,60 @@
 <span id="or">or</span>
 <input id="age" type="text" placeholder="Search by age">
 <img src="../assets/img/searchBlue.png" id="searchAge" alt="searchage"> -->
-<div *ngIf="isLoading==false" id="pathsTable">
-    <table >
-        <tr>
-            <th class="title" *ngFor="let t of titles">{{t}}</th>
-        </tr>
-        <tr *ngFor="let location of patientService.locations">
-            <td>{{location.startDate}}</td>
-            <td>{{location.endDate}}</td>
-            <td>{{location.city}}</td>
-            <td>{{location.location}}</td>
-            <td (click)='deleteLocation(location)' >X</td>
-        </tr>
-        <tr>
-            <td><input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date"></td>
-            <td><input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date"></td>
-            <td><input type="text" [(ngModel)]="newLocation.city" placeholder="city"></td> 
-            <td><input type="text" [(ngModel)]="newLocation.location" placeholder="location"></td>
-            <td><input type="button" value="Add" (click)="addLocation()"></td>
-        </tr>
-    </table>
-    <button (click)="saveChanges()" id="save">save!!</button>
-</div>
+<form #pathTable="ngForm" ngNativeValidate>
+    <div *ngIf="isLoading==false" id="pathsTable">
+        <table>
+            <tr>
+                <th class="title" *ngFor="let t of titles">{{t}}</th>
+            </tr>
+            <tr *ngFor="let location of patientService.locations">
+                <td>{{location.startDate}}</td>
+                <td>{{location.endDate}}</td>
+                <td>{{location.city}}</td>
+                <td>{{location.location}}</td>
+                <td (click)='deleteLocation(location)'>X</td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    <input type="date" name="startDate" [(ngModel)]="newLocation.startDate" placeholder="start date">
+                </td>
+                <td>
+                    <input type="date" name="endDate" [(ngModel)]="newLocation.endDate" placeholder="end date">
+                </td>
+                <td>
+                    <input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city"
+                    minlength="3" maxlength="15" #test>{{test.className}}
+                </td>
+                <td>
+                    <input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location">
+                </td>
+                <td>
+                    <input type="button" value="Add" (click)="addLocation()"></td>
+            </tr> -->
+        </table>
+        <input type="submit" id="save" value="save">
+        <!-- <button (click)="saveChanges()" id="save">save!!</button> -->
+    </div>
 
-<div  *ngIf="isLoading==true" class="loader"></div>
+</form>
 
+<div *ngIf="isLoading==true" class="loader"></div>
+
+<!-- 
+<div class="row">
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+      <input type="text"
+             placeholder="Datepicker"
+             class="form-control"
+             bsDatepicker>
+    </div>
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+      <input type="text"
+             placeholder="Daterangepicker"
+             class="form-control"
+             bsDaterangepicker>
+    </div>
+  </div> -->
 <!-- <div>
     <input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date">
     <input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date">
@@ -48,3 +76,22 @@
 </div>
  -->
 
+
+<mat-label>Enter a date range</mat-label>
+<mat-date-range-input [rangePicker]="picker">
+    <input matStartDate placeholder="Start date">
+    <input matEndDate placeholder="End date">
+</mat-date-range-input>
+<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+<mat-date-range-picker #picker></mat-date-range-picker>
+<br>
+<input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city" minlength="3" maxlength="15"
+    #test>{{test.className}}
+<br>
+<input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location">
+<br>
+<input type="button" value="Add" (click)="addLocation()">
+
+<br>
+<br>
+<app-date-picker-range></app-date-picker-range>

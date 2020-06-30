@@ -16,6 +16,7 @@ export class PatientComponent implements OnInit {
   newLocation: location = new location();
   isLoading: boolean = true;
   titles = ['Start Date', 'End Date', 'City', 'Location', ''];
+  
   constructor(public patientService: PatientService) { }
 
   ngOnInit(): void {

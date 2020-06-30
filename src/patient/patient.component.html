@@ -25,24 +25,12 @@
                 <td>{{location.location}}</td>
                 <td (click)='deleteLocation(location)'>X</td>
             </tr>
-            <!-- <tr>
-                <td>
-                    <input type="date" name="startDate" [(ngModel)]="newLocation.startDate" placeholder="start date">
-                </td>
-                <td>
-                    <input type="date" name="endDate" [(ngModel)]="newLocation.endDate" placeholder="end date">
-                </td>
-                <td>
-                    <input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city"
-                    minlength="3" maxlength="15" #test>{{test.className}}
-                </td>
-                <td>
-                    <input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location">
-                </td>
-                <td>
-                    <input type="button" value="Add" (click)="addLocation()"></td>
-            </tr> -->
         </table>
+        <input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city" minlength="3" maxlength="15"
+            #test>
+        <input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location">
+        <app-date-picker-range></app-date-picker-range>
+        <input type="button" value="Add" (click)="addLocation()">
         <input type="submit" id="save" value="save">
         <!-- <button (click)="saveChanges()" id="save">save!!</button> -->
     </div>
@@ -50,48 +38,5 @@
 </form>
 
 <div *ngIf="isLoading==true" class="loader"></div>
-
-<!-- 
-<div class="row">
-    <div class="col-xs-12 col-12 col-md-4 form-group">
-      <input type="text"
-             placeholder="Datepicker"
-             class="form-control"
-             bsDatepicker>
-    </div>
-    <div class="col-xs-12 col-12 col-md-4 form-group">
-      <input type="text"
-             placeholder="Daterangepicker"
-             class="form-control"
-             bsDaterangepicker>
-    </div>
-  </div> -->
-<!-- <div>
-    <input type="date" [(ngModel)]="newLocation.startDate" placeholder="start date">
-    <input type="date" [(ngModel)]="newLocation.endDate" placeholder="end date">
-    <input type="text" [(ngModel)]="newLocation.city" placeholder="city">
-    <input type="text" [(ngModel)]="newLocation.location" placeholder="location">
-    <input type="button" value="Add" (click)="addLocation()">
-
-</div>
- -->
-
-
-<mat-label>Enter a date range</mat-label>
-<mat-date-range-input [rangePicker]="picker">
-    <input matStartDate placeholder="Start date">
-    <input matEndDate placeholder="End date">
-</mat-date-range-input>
-<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-<mat-date-range-picker #picker></mat-date-range-picker>
 <br>
-<input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city" minlength="3" maxlength="15"
-    #test>{{test.className}}
-<br>
-<input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location">
-<br>
-<input type="button" value="Add" (click)="addLocation()">
-
-<br>
-<br>
-<app-date-picker-range></app-date-picker-range>
+<app-paginator></app-paginator>

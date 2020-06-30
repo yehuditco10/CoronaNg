@@ -15,10 +15,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 //import {FormGroup, FormControl} from '@angular/forms';
 import { DatePickerRangeComponent } from './date-picker-range/date-picker-range.component';
 import { RouterModule } from '@angular/router'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { MatTableModule } from '@angular/material/table' 
 @NgModule({
   declarations: [
     PatientComponent,
-    DatePickerRangeComponent
+    DatePickerRangeComponent,
+    PaginatorComponent
 
   ],
   imports: [
@@ -34,6 +38,8 @@ import { RouterModule } from '@angular/router'
     MatInputModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    MatPaginatorModule,
+    MatTableModule
     //FormGroup, FormControl
   ],
   providers: [

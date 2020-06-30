@@ -17,12 +17,14 @@ import { DatePickerRangeComponent } from './date-picker-range/date-picker-range.
 import { RouterModule } from '@angular/router'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { MatTableModule } from '@angular/material/table' 
+import { MatTableModule } from '@angular/material/table';
+import { LoginComponent } from './login/login.component' 
 @NgModule({
   declarations: [
     PatientComponent,
     DatePickerRangeComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoginComponent
 
   ],
   imports: [

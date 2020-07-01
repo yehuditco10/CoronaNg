@@ -13,7 +13,7 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  locations: location[];
+  patientLocations: location[];
  
   login(patient: Patient): Observable<Array<location>> {
     return this.http.post<Array<location>>(`${environment.baseRoute}patient/Authenticate`, patient);

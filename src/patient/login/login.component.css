@@ -166,6 +166,9 @@ html {
     }
   }
   .link{
-    color:#5099eff2
+    color:#5099eff2;
+    text-decoration: underline;
+    margin-left: 2vw;
+    cursor: pointer;
   }
   

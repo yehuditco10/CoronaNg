@@ -40,6 +40,7 @@ import { RegisterComponent } from './register/register.component'
     RouterModule.forRoot([
       {path:'locations',component:LocationListComponent},
       {path:'register',component:RegisterComponent},
+      {path:'login',component:LoginComponent},
       {path:'',component:LoginComponent}
     ]),
     HttpClientModule,

@@ -28,16 +28,23 @@
         <th mat-header-cell *matHeaderCellDef> Location </th>
         <td mat-cell *matCellDef="let element"> {{element.location}} </td>
       </ng-container>
+<!-- 
+      <ng-container *ngIf="patientService.patientLocations" matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> X </td>
+      </ng-container> -->
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[2,halfLength,locations.length]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[2,halfLength,locationsLength]" showFirstLastButtons></mat-paginator>
   </div>
-  <div class="newLocation">
+  <div *ngIf="patientService.patientLocations" class="newLocation">
     <app-add-location (notifyNewLocation)='onNotifyNewLocation($event)'></app-add-location>
+    <input type="submit" mat-raised-button color="primary">
   </div>
-  <input type="submit" mat-raised-button color="primary">
+  
 </form>
 <!-- </div> -->

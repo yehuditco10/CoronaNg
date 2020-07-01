@@ -12,30 +12,44 @@ import { PatientService } from '../shared/services/patient.service'
 })
 export class LocationListComponent implements OnInit {
 
-  constructor(private patientService: PatientService) { }
+  constructor(public patientService: PatientService) { }
 
   displayedColumns: string[] = ['startDate', 'endDate', 'city', 'location'];
   locations: location[];
   dataSource: any;
   isLoading: boolean = true;
   halfLength: number;
+  locationsLength:number;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
-   
-    this.patientService.getAll().subscribe(
-      succsses => {
-        debugger
-        this.isLoading = false,
-          console.log(succsses),
-          this.locations = succsses,
-          this.dataSource = new MatTableDataSource<location>(this.locations),
-          this.dataSource.paginator = this.paginator,
-          this.halfLength = Math.floor(this.locations.length / 2)
 
-      },
-      err => console.log(err))
+    if (this.patientService.patientLocations) {
+      debugger;
+      this.isLoading = false
+      this.locations = this.patientService.patientLocations;
+      this.dataSource = new MatTableDataSource<location>(this.locations);
+      this.dataSource.paginator = this.paginator;
+      this.halfLength = Math.floor(this.locations.length / 2);
+      this.locationsLength=this.locations.length;
+    }
+    else {
+      this.patientService.getAll().subscribe(
+        succsses => {
+          debugger
+          this.isLoading = false,
+            console.log(succsses),
+            this.locations = succsses,
+            this.dataSource = new MatTableDataSource<location>(this.locations),
+            this.dataSource.paginator = this.paginator,
+            this.halfLength = Math.floor(this.locations.length / 2)
+
+        },
+        err => console.log(err))
+    }
+
+
   }
   onNotifyNewLocation(newLocation: location) {
     debugger;

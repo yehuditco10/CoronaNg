@@ -165,4 +165,11 @@ html {
       bottom: 100%;
     }
   }
+
+  .link{
+    color:#5099eff2;
+    text-decoration: underline;
+    margin-left: 2vw;
+    cursor: pointer;
+  }
   

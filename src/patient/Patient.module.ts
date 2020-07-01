@@ -5,35 +5,30 @@ import { LoginService } from './shared/services/login.service';
 import { from } from 'rxjs';
 import { PatientService } from './shared/services/patient.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,Validators //,FormGroup, FormControl
+} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-//import {FormGroup, FormControl} from '@angular/forms';
-import { DatePickerRangeComponent } from './date-picker-range/date-picker-range.component';
 import { RouterModule } from '@angular/router'
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { PaginatorComponent } from './paginator/paginator.component';
+import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { LoginComponent } from './login/login.component' 
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component' 
 @NgModule({
   declarations: [
     PatientComponent,
-    DatePickerRangeComponent,
-    PaginatorComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
 
   ],
   imports: [
     CommonModule,
     FormsModule,
     BrowserModule,
-    RouterModule.forRoot([
-      {path:'datepicker',component:DatePickerRangeComponent}
-    ]),
     HttpClientModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
@@ -41,8 +36,8 @@ import { LoginComponent } from './login/login.component'
     MatFormFieldModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatTableModule
-    //FormGroup, FormControl
+    MatTableModule,ReactiveFormsModule
+  //  FormGroup, FormControl
   ],
   providers: [
     LoginService,

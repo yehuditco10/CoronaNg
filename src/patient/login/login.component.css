@@ -58,7 +58,7 @@ html {
   .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #03e9f4;
+    color: #5099eff2;
     font-size: 12px;
   }
   
@@ -66,7 +66,7 @@ html {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #03e9f4;
+    color: #5099eff2;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -77,13 +77,13 @@ html {
   }
   
   .login-box a:hover {
-    background: #03e9f4;
+    background: #5099eff2;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 100px #03e9f4;
+    box-shadow: 0 0 5px #5099eff2,
+                0 0 25px #5099eff2,
+                0 0 50px #5099eff2,
+                0 0 100px #5099eff2;
   }
   
   .login-box a span {
@@ -96,7 +96,7 @@ html {
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
+    background: linear-gradient(90deg, transparent, #5099eff2);
     animation: btn-anim1 1s linear infinite;
   }
   
@@ -114,7 +114,7 @@ html {
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
+    background: linear-gradient(180deg, transparent, #5099eff2);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
@@ -133,7 +133,7 @@ html {
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
+    background: linear-gradient(270deg, transparent, #5099eff2);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
@@ -152,7 +152,7 @@ html {
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
+    background: linear-gradient(360deg, transparent, #5099eff2);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }
@@ -164,5 +164,8 @@ html {
     50%,100% {
       bottom: 100%;
     }
+  }
+  .link{
+    color:#5099eff2
   }
   

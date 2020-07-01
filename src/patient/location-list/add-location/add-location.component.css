@@ -1,0 +1,10 @@
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    margin-right: 0.5vw;
+    width: 18vw;
+}
+.error{
+    color: red;;
+}

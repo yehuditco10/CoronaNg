@@ -13,18 +13,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 //import {FormGroup, FormControl} from '@angular/forms';
-import { DatePickerRangeComponent } from './date-picker-range/date-picker-range.component';
 import { RouterModule } from '@angular/router'
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { PaginatorComponent } from './paginator/paginator.component';
+import { LocationListComponent } from './location-list/location-list.component';
 import { MatTableModule } from '@angular/material/table';
-import { LoginComponent } from './login/login.component' 
+import { LoginComponent } from './login/login.component';
+import{PatientRoutingModule} from'./patient-routing.module';
+import { AddLocationComponent } from './location-list/add-location/add-location.component';
+
 @NgModule({
   declarations: [
     PatientComponent,
-    DatePickerRangeComponent,
-    PaginatorComponent,
-    LoginComponent
+    LocationListComponent,
+    LoginComponent,
+    AddLocationComponent
 
   ],
   imports: [
@@ -32,7 +34,7 @@ import { LoginComponent } from './login/login.component'
     FormsModule,
     BrowserModule,
     RouterModule.forRoot([
-      {path:'datepicker',component:DatePickerRangeComponent}
+      {path:'locations',component:LocationListComponent}
     ]),
     HttpClientModule,
     BrowserAnimationsModule,
@@ -41,7 +43,8 @@ import { LoginComponent } from './login/login.component'
     MatFormFieldModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    PatientRoutingModule
     //FormGroup, FormControl
   ],
   providers: [

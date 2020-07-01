@@ -1,0 +1,44 @@
+<!-- <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+        <input name="location" [(ngModel)]="newLocation.startDate" matStartDate placeholder="Start date">
+        <input name="location" [(ngModel)]="newLocation.endDate" matEndDate placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field> -->
+<!-- <form #addLocation="ngForm" ngNativeValidate> -->
+    
+    <mat-form-field color="accent" appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startDate" [(ngModel)]="newLocation.startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate color="primary"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field color="accent" appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDate" [(ngModel)]="newLocation.endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate color="primary"></mat-datepicker>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput name="city" [(ngModel)]="newLocation.city" minlength="3" maxlength="15">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput name="location" [(ngModel)]="newLocation.location" required>
+    </mat-form-field>
+    <!-- <input type="text" name="city" [(ngModel)]="newLocation.city" placeholder="city" minlength="3" maxlength="15" #test>
+<input type="text" name="location" [(ngModel)]="newLocation.location" required placeholder="location"> -->
+    <!-- <app-date-picker-range></app-date-picker-range> -->
+    <!-- <input type="button" value="Add" (click)="addLocation()"> -->
+    <!-- <input type="button" value="Add" > -->
+<input type="submit"mat-raised-button color="primary" (click)="addNewLocation()" value="Add">
+   
+    <br>
+    <span class="error" *ngIf='validDated==false'>*your dates aren't valid</span>
+<!-- </form> -->

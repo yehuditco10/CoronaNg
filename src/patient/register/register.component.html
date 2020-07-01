@@ -1,0 +1,29 @@
+<div class="login-box">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+      <div class="user-box">       
+          <input type="text" formControlName="UserName" name="UserName" required pattern="*@*">
+        <label>User name</label>
+      </div>
+      <div class="user-box">
+        <input type="password" formControlName="Password" name="Password" required minlength="6">
+        <label>Password</label>
+      </div> 
+      <div class="user-box">
+        <input type="password" formControlName="PasswordAuthentication" 
+        name="Password Authentication" required minlength="6">
+        <label>Password</label>
+      </div>
+      <button  
+        type="submit" [disabled]="!registerForm.valid">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </button>
+      
+    </form>
+    <span style="color: azure;">{{message}}</span>
+  </div>

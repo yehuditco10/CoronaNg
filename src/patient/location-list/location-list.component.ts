@@ -17,14 +17,14 @@ export class LocationListComponent implements OnInit {
 
   constructor(public patientService: PatientService, private router: Router) { }
 
-  displayedColumns: string[] = ['startDate', 'endDate', 'city', 'location'];
+  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'city', 'location', 'delete'];
   locations: location[];
   dataSource: any;
   isLoading: boolean = true;
   halfLength: number;
   locationsLength: number;
-
-
+  pageSizeOptions: [];
+  index: number;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ngOnInit() {
@@ -36,6 +36,7 @@ export class LocationListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<location>(this.locations);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
       this.halfLength = Math.floor(this.locations.length / 2);
       this.locationsLength = this.locations.length;
 
@@ -47,11 +48,17 @@ export class LocationListComponent implements OnInit {
           this.isLoading = false,
             console.log(succsses),
             this.locations = succsses,
+            this.halfLength = Math.floor(this.locations.length / 2),
+            this.locationsLength = this.locations.length,
+
             this.dataSource = new MatTableDataSource<location>(this.locations),
             this.dataSource.paginator = this.paginator,
-            this.halfLength = Math.floor(this.locations.length / 2),
-            this.halfLength = Math.floor(this.locations.length / 2),
-            this.locationsLength = this.locations.length
+            console.log(this.pageSizeOptions),
+            console.log(this.dataSource.paginator.pageIndex);
+          console.log(this.dataSource.paginator.pageSize);
+
+          console.log(this.dataSource)
+
 
         },
         err => console.log(err))
@@ -64,9 +71,25 @@ export class LocationListComponent implements OnInit {
     this.locations.push(newLocation);
     this.dataSource = new MatTableDataSource<location>(this.locations);
     this.dataSource.paginator = this.paginator;
-
   }
   getDetails(id: number) {
     this.router.navigate(['/locations', id]);
   }
+
+  delete(locationTODelete: location) {
+    this.index = this.patientService.patientLocations.indexOf(locationTODelete);
+    console.log(this.index);
+    
+    this.patientService.patientLocations.splice(this.index,1);
+    this.locations=this.patientService.patientLocations;
+    this.dataSource = new MatTableDataSource<location>(this.locations);
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(filterValue: string) {
+    debugger;
+     filterValue = filterValue.trim(); // Remove whitespace    
+     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches    
+     this.dataSource.filter = filterValue;
+     
+   }
 }

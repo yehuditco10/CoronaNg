@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { location } from '../shared/models/location';
-import { from } from 'rxjs';
 import { PatientService } from '../shared/services/patient.service'
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
-
+import { PaginationService } from '../shared/services/pagination.service';
 
 @Component({
   selector: 'app-location-list',
@@ -15,14 +14,23 @@ import { MatSort } from '@angular/material/sort';
 })
 export class LocationListComponent implements OnInit {
 
-  constructor(public patientService: PatientService, private router: Router) { }
+  dataSource = new MatTableDataSource<location>();
+  // @Input('dataSource')
+  // set allowDay(value: location[]) {
+  //     this.dataSource = new MatTableDataSource<location>(value);
+  // }
+  @Input() totalCount: number;
+  @Output() onDeletelocation = new EventEmitter();
+  @Output() onPageSwitch = new EventEmitter();
+  constructor(public paginationService: PaginationService,
+              public patientService: PatientService,
+               private router: Router) { }
 
-  displayedColumns: string[] = ['startDate', 'endDate', 'city', 'location'];
+ displayedColumns: string[] = ['startDate', 'endDate', 'city', 'location'];
   locations: location[];
-  dataSource: any;
   isLoading: boolean = true;
-  halfLength: number;
-  locationsLength: number;
+  // halfLength: number;
+  // locationsLength: number;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -34,11 +42,10 @@ export class LocationListComponent implements OnInit {
       this.isLoading = false
       this.locations = this.patientService.patientLocations;
       this.dataSource = new MatTableDataSource<location>(this.locations);
-      this.dataSource.paginator = this.paginator;
+      // this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.halfLength = Math.floor(this.locations.length / 2);
-      this.locationsLength = this.locations.length;
-
+      // this.halfLength = Math.floor(this.locations.length / 2);
+      // this.locationsLength = this.locations.length;
     }
     else {
       this.patientService.getAll().subscribe(
@@ -47,17 +54,15 @@ export class LocationListComponent implements OnInit {
           this.isLoading = false,
             console.log(succsses),
             this.locations = succsses,
-            this.dataSource = new MatTableDataSource<location>(this.locations),
-            this.dataSource.paginator = this.paginator,
-            this.halfLength = Math.floor(this.locations.length / 2),
-            this.halfLength = Math.floor(this.locations.length / 2),
-            this.locationsLength = this.locations.length
+            this.dataSource = new MatTableDataSource<location>(this.locations)
+            //this.dataSource.paginator = this.paginator,
+            // this.halfLength = Math.floor(this.locations.length / 2),
+            // this.halfLength = Math.floor(this.locations.length / 2),
+            // this.locationsLength = this.locations.length
 
         },
         err => console.log(err))
     }
-
-
   }
   onNotifyNewLocation(newLocation: location) {
     debugger;

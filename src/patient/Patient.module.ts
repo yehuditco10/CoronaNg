@@ -21,9 +21,10 @@ import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
 import{PatientRoutingModule} from'./patient-routing.module';
 import { AddLocationComponent } from './location-list/add-location/add-location.component';
-
-
-import { RegisterComponent } from './register/register.component' 
+import { RegisterComponent } from './register/register.component';
+import { LocationDetailsComponent } from './location-list/location-details/location-details.component' ;
+import {MatCardModule} from '@angular/material/card';
+// import {MatTableDataSource} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterComponent } from './register/register.component'
     LocationListComponent,
     LoginComponent,
     AddLocationComponent,
-    RegisterComponent
+    RegisterComponent,
+    LocationDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { RegisterComponent } from './register/register.component'
     BrowserModule,
     RouterModule.forRoot([
       {path:'locations',component:LocationListComponent},
+      {path:'locations/:id',component:LocationDetailsComponent},
       {path:'register',component:RegisterComponent},
       {path:'login',component:LoginComponent},
       {path:'',component:LoginComponent}
@@ -52,7 +55,9 @@ import { RegisterComponent } from './register/register.component'
     MatPaginatorModule,
     MatTableModule,
     PatientRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+     MatCardModule
+    // ,MatTableDataSource
     //FormGroup, FormControl
   ],
   providers: [

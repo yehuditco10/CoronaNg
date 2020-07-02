@@ -46,3 +46,6 @@ tr.mat-header-row {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+th.mat-sort-header-sorted {
+  color: black;
+}

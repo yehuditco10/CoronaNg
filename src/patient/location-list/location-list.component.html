@@ -8,11 +8,11 @@
   </div>
 
   <div class="example-container mat-elevation-z8">
-    <mat-table #table matSort [dataSource]="dataSource"  >
+    <mat-table #table matSort [dataSource]="dataSource">
       <!-- start date Column -->
       <ng-container matColumnDef="startDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
-        <mat-cell *matCellDef="let element" (click)="getDetails(element.id)" >{{element.startDate }}
+        <mat-cell *matCellDef="let element" (click)="getDetails(element.id)">{{element.startDate }}
           <!-- <a [routerLink]="['/locations',element.id]"> </a> -->
         </mat-cell>
       </ng-container>
@@ -52,15 +52,14 @@
 
     <!-- <mat-paginator [pageSizeOptions]="[2,halfLength,locationsLength]" showFirstLastButtons></mat-paginator> -->
   </div>
-  <mat-paginator [length]="totalCount"
-    [pageSize]="paginationService.pageSize"
-  [pageSizeOptions]="paginationService.selectItemsPerPage" 
-    (page)="onPageSwitch($event)">
-  </mat-paginator>
-  <div *ngIf="patientService.patientLocations" class="newLocation">
-    <app-add-location (notifyNewLocation)='onNotifyNewLocation($event)'></app-add-location>
-    <input type="submit" mat-raised-button color="primary">
-  </div>
+  <div *ngIf="patientService.patientLocations">
+    <mat-paginator [length]="totalCount" [pageSize]="paginationService.pageSize"
+      [pageSizeOptions]="paginationService.selectItemsPerPage" (page)="onPageSwitch($event)">
+    </mat-paginator>
+    <div class="newLocation">
+      <app-add-location (notifyNewLocation)='onNotifyNewLocation($event)'></app-add-location>
+      <input type="submit" mat-raised-button color="primary">
+    </div>
 
 </form>
-<!-- </div> -->
+</div>

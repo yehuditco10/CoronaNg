@@ -21,6 +21,7 @@ export class LocationListComponent implements OnInit {
   // }
   @Input() totalCount: number;
   @Output() onDeletelocation = new EventEmitter();
+ 
   //@Output() onPageSwitch = new EventEmitter();
   constructor(public paginationService: PaginationService,
               public patientService: PatientService,
@@ -32,7 +33,8 @@ export class LocationListComponent implements OnInit {
   halfLength: number;
   locationsLength: number;
   pageSizeOptions: [];
-  index: number;
+  index: number; 
+  
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ngOnInit() {

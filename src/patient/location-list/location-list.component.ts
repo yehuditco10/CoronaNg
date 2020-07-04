@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { location } from '../shared/models/location';
 import { PatientService } from '../shared/services/patient.service'
@@ -21,12 +21,12 @@ export class LocationListComponent implements OnInit {
   // }
   @Input() totalCount: number;
   @Output() onDeletelocation = new EventEmitter();
-  @Output() onPageSwitch = new EventEmitter();
+  //@Output() onPageSwitch = new EventEmitter();
   constructor(public paginationService: PaginationService,
               public patientService: PatientService,
                private router: Router) { }
 
-  displayedColumns: string[] = ['id', 'startDate', 'endDate', 'city', 'location', 'delete'];
+  displayedColumns: string[] = ['startDate', 'endDate', 'city', 'location', 'delete'];
   locations: location[];
   isLoading: boolean = true;
   halfLength: number;
@@ -53,7 +53,7 @@ export class LocationListComponent implements OnInit {
           debugger
           this.isLoading = false,
             console.log(succsses),
-            this.locations = succsses,
+            this.locations = succsses.body.value,
             this.dataSource = new MatTableDataSource<location>(this.locations)
             //this.dataSource.paginator = this.paginator,
             // this.halfLength = Math.floor(this.locations.length / 2),
@@ -100,4 +100,18 @@ export class LocationListComponent implements OnInit {
      this.dataSource.filter = filterValue;
      
    }
+   onPageSwitch(event: PageEvent)
+   {
+     debugger
+     this.paginationService.change(event);
+     this.getAlllocations();
+   }
+
+getAlllocations() { 
+    this.patientService.getAll()
+        .subscribe((result: any) => {
+            this.totalCount = JSON.parse(result.headers.get('X-Pagination')).totalCount;
+            this.dataSource = result.body.value;
+        });
+ }
 }

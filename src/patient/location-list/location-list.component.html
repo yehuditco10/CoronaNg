@@ -19,7 +19,7 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="endDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> End Date date:'shortDate'</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> End Date date</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.endDate }} </mat-cell>
       </ng-container>
 
@@ -55,7 +55,7 @@
   <mat-paginator [length]="totalCount"
     [pageSize]="paginationService.pageSize"
   [pageSizeOptions]="paginationService.selectItemsPerPage" 
-    (page)="onPageSwitch.emit($event)">
+    (page)="onPageSwitch($event)">
   </mat-paginator>
   <div *ngIf="patientService.patientLocations" class="newLocation">
     <app-add-location (notifyNewLocation)='onNotifyNewLocation($event)'></app-add-location>

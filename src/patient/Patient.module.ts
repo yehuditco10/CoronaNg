@@ -28,8 +28,7 @@ import { AddLocationComponent } from './location-list/add-location/add-location.
 import { RegisterComponent } from './register/register.component';
 import { LocationDetailsComponent } from './location-list/location-details/location-details.component';
 import { MatCardModule } from '@angular/material/card';
-import { ListComponent } from './list/list.component';
-import { OverViewComponent } from './over-view/over-view.component';
+
 // import {MatTableDataSource} from '@angular/material/table';
 
 @NgModule({
@@ -40,8 +39,7 @@ import { OverViewComponent } from './over-view/over-view.component';
     AddLocationComponent,
     RegisterComponent,
     LocationDetailsComponent,
-    ListComponent,
-    OverViewComponent
+
   ],
   imports: [
     CommonModule,
